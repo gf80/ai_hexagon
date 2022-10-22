@@ -41,6 +41,7 @@ while True:
                 else: #Диагональный ход
                     if abs(start0-end0) < 2 and logic[end1][end0] == '♟':
                         logic[end1][end0], logic[start1][start0] = logic[start1][start0], "_"
+                        
                         print(f"""
 -|_A_|_B_|_C_| 
 1|_{logic[0][0]}_|_{logic[0][1]}_|_{logic[0][2]}_| 
@@ -52,6 +53,34 @@ while True:
                     else:
                         print('Неверный ход!\n')
             else: print("Неверный ход!\n")
+
+    if logic[0].count('♟') == 0 and logic[1].count('♟') == 0 and logic[2].count('♟') == 0: #Если больше нет черных пешек
+        print("Белые победили!")
+        break
+    elif logic[0][0] == '♙' or logic[0][1] == '♙' or logic[0][2] == '♙': #Если черные дошли до конца
+        print('Белые победили!')
+        break
+    flag = 0 # Есть ли ходы для черных пешек
+    for i in range(3):
+        for j in range(3):
+            if logic[i][j] == '♟':
+                if j == 0:
+                    if logic[i+1][j] == "_" or logic[i+1][j+1] == "♙":
+                        flag = 1
+                        break
+                elif j == 1:
+                    if logic[i+1][j] == "_" or logic[i+1][j+1] == "♙" or logic[i+1][j-1]=="♙":
+                        flag = 1
+                        break
+                else:
+                    if logic[i+1][j] == "_" or logic[i+1][j-1]=="♙":
+                        flag = 1
+                        break
+    if flag == 0:
+        print("Черные победили!")
+        break
+
+
     else:
         while True:
             choice = input("Введите ход (позиция_вашей_фигуры позиция_куда_ее_передвинуть): ")
@@ -90,3 +119,29 @@ while True:
                     else:
                         print('Неверный ход!\n')
             else: print("Неверный ход!\n")
+
+    if logic[0].count('♙') == 0 and logic[1].count('♙') == 0 and logic[2].count('♙') == 0: #Если больше нет белых пешек
+        print("Черные победили!")
+        break
+    elif logic[2][0] == '♟' or logic[2][1] == '♟' or logic[2][2] == '♟': #Если черные дошли до конца
+        print('Черные победили!')
+        break
+    flag = 0 #Есть ли ходы для белых пешек
+    for i in range(3):
+        for j in range(3):
+            if logic[i][j] == '♙':
+                if j == 0:
+                    if logic[i-1][j] == "_" or logic[i-1][j+1] == "♟":
+                        flag = 1
+                        break
+                elif j == 1:
+                    if logic[i-1][j] == "_" or logic[i-1][j+1] == "♟" or logic[i-1][j-1]=="♟":
+                        flag = 1
+                        break
+                else:
+                    if logic[i-1][j] == "_" or logic[i-1][j-1]=="♟":
+                        flag = 1
+                        break
+    if flag == 0:
+        print("Белые победили!")
+        break
