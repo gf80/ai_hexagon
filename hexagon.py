@@ -16,13 +16,13 @@ abc = "ABC"
 while True:
     if n % 2 == 1:
         while True:
-            choice = input("Введите ход (позиция_вашей_фигуры позиция_куда_ее_передвинуть): ")
+            choice = input("Введите ход за белых (позиция_вашей_фигуры позиция_куда_ее_передвинуть): ")
             start, end = choice.split(" ")
 
             #start1 - индедекс строки, start0 - индекс столбца
-            start0, start1 = abc.index(start[0]), int(start[1])-1
+            start0, start1 = abc.index(start[0].upper()), int(start[1])-1
             #end1 - индекс строки, end0 - индекс столбца
-            end0, end1 = abc.index(end[0]), int(end[1])-1
+            end0, end1 = abc.index(end[0].upper()), int(end[1])-1
 
             if logic[start1][start0] == '♙': # Проверка пешки
                 if start0-end0 == 0: #Ход прямо
@@ -83,13 +83,13 @@ while True:
 
     else:
         while True:
-            choice = input("Введите ход (позиция_вашей_фигуры позиция_куда_ее_передвинуть): ")
+            choice = input("Введите ход за черных (позиция_вашей_фигуры позиция_куда_ее_передвинуть): ")
             start, end = choice.split(" ")
             
             #start1 - индедекс строки, start0 - индекс столбца
-            start0, start1 = abc.index(start[0]), int(start[1])-1
+            start0, start1 = abc.index(start[0].upper()), int(start[1])-1
             #end1 - индекс строки, end0 - индекс столбца
-            end0, end1 = abc.index(end[0]), int(end[1])-1
+            end0, end1 = abc.index(end[0].upper()), int(end[1])-1
             
             if logic[start1][start0] == '♟': # Проверка пешки
                 if start0-end0 == 0: #Ход прямо
